@@ -8,7 +8,7 @@ const App = () => {
   const [isOpen, setIsOpen] = useState(true);
 
   const handleClick = (event) => {
-    const { name } = event.target;
+    const { name } = event.target.closest('button');
     if (name === 'prev') step > 1 && setStep((s) => s - 1);
     if (name === 'next') step < 3 && setStep((s) => s + 1);
   };
@@ -35,7 +35,7 @@ const App = () => {
               pointerEvents={step === 1 ? 'none' : 'auto'}
               onClick={handleClick}
             >
-              <span>👈</span> Previous
+              <span onClick={handleClick}>👈</span> Previous
             </Button>
 
             <Button
@@ -44,7 +44,7 @@ const App = () => {
               pointerEvents={step === 3 ? 'none' : 'auto'}
               onClick={handleClick}
             >
-              Next <span>👉</span>
+              Next <span onClick={handleClick}>👉</span>
             </Button>
           </div>
         </div>
