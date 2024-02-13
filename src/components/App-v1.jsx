@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import Button from './Button';
 
 const messages = ['Learn React ⚛️', 'Apply for jobs 💼', 'Invest your new income 🤑'];
 
@@ -29,23 +28,26 @@ const App = () => {
             Step {step}: {messages[step - 1]}
           </p>
           <div className="buttons">
-            <Button
+            <button
               name="prev"
-              opacity={step === 1 ? 0.5 : 1}
-              pointerEvents={step === 1 ? 'none' : 'auto'}
+              style={{
+                pointerEvents: step <= 1 ? 'none' : 'auto',
+                opacity: step <= 1 ? 0.5 : 1,
+              }}
               onClick={handleClick}
             >
-              <span>👈</span> Previous
-            </Button>
-
-            <Button
+              Previous
+            </button>
+            <button
               name="next"
-              opacity={step === 3 ? 0.5 : 1}
-              pointerEvents={step === 3 ? 'none' : 'auto'}
+              style={{
+                pointerEvents: step >= 3 ? 'none' : 'auto',
+                opacity: step >= 3 ? 0.5 : 1,
+              }}
               onClick={handleClick}
             >
-              Next <span>👉</span>
-            </Button>
+              Next
+            </button>
           </div>
         </div>
       )}
